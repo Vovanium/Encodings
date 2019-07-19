@@ -1,0 +1,14 @@
+project Encodings is
+	for Source_Dirs use ("source");
+	for Object_Dir use "build/objects";
+	for Library_Dir use "build/library";
+	for Library_Name use "encodings";
+	for Library_Kind use "static";
+	package Builder is
+		for Default_Switches("Ada") use (
+			"-gnato",
+			"-O2",
+			"-gnatW8"
+		);
+	end Builder;
+end Encodings;
