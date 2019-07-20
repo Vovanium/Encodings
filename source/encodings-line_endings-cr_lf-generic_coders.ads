@@ -10,9 +10,9 @@ package Encodings.Line_Endings.CR_LF.Generic_Coders is
 		procedure Convert(
 			This: in out Coder; -- Coder state
 			Source: in String_Type; -- String to be converted
-			Read: out Natural; -- Last index of source string read (length if string is starting at 1)
-			Destination: out String_Type; -- Converted string
-			Written: out Natural -- Last Index of destination string written
+			Source_Last: out Natural; -- Last index of source string read (length if string is starting at 1)
+			Target: out String_Type; -- Converted string
+			Target_Last: out Natural -- Last Index of destination string written
 		);
 	private
 		type Coder_State is (
