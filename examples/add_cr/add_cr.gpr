@@ -1,0 +1,6 @@
+with "../../encodings.gpr";
+project Add_CR is
+	for Object_Dir use "../../build/objects";
+	for Exec_Dir use "../../build/executables";
+	for Main use ("add_cr.adb");
+end Add_CR;
