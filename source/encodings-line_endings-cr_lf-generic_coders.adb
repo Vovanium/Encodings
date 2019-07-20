@@ -1,5 +1,5 @@
-package body Encodings.Line_Endings.Add_CR is
-	package body Generic_Coders is
+package body Encodings.Line_Endings.CR_LF.Generic_Coders is
+	package body Generic_Encoders is
 		procedure Convert(
 			This: in out Coder;
 			Source: in String_Type;
@@ -39,5 +39,5 @@ package body Encodings.Line_Endings.Add_CR is
 				Destination(Written) := C;
 			end loop;
 		end Convert;
-	end Generic_Coders;
-end Encodings.Line_Endings.Add_CR;
+	end Generic_Encoders;
+end Encodings.Line_Endings.CR_LF.Generic_Coders;
