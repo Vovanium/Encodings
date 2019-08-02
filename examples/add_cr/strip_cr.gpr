@@ -1,0 +1,9 @@
+with "../../encodings.gpr";
+project Strip_CR is
+	for Object_Dir use "../../build/objects";
+	for Exec_Dir use "../../build/executables";
+	for Main use ("strip_cr.adb");
+	package Builder is
+		For Default_Switches("Ada") use ("-ggdb", "-gnatW8");
+	end Builder;
+end Strip_CR;
