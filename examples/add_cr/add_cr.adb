@@ -9,32 +9,34 @@ with Ada.Text_IO.Text_Streams;
 use  Ada.Text_IO.Text_Streams;
 with Ada.Unchecked_Conversion;
 with Encodings.Line_Endings.Add_CR;
+with Encodings.Utility;
+use Encodings.Utility;
 procedure Add_CR is
 	-- String version of Stream.Read
-	procedure Read_String(
-		Stream: in out Root_Stream_Type'Class;
-		Item: out String;
-		Last: out Natural
-	) is
-		Character_Length: constant := Character'Stream_Size / Stream_Element'Size;
-		Buffer_Length: constant Stream_Element_Offset := Item'Length * Character_Length;
-		Buffer: Stream_Element_Array(1 .. Buffer_Length);
-		Buffer_I, Buffer_Last: Stream_Element_Offset;
-		Character_Count: Natural;
-		function Conversion is new Ada.Unchecked_Conversion(
-			Source => Stream_Element_Array,
-			Target => Character
-		);
-	begin
-		Stream.Read(Buffer, Buffer_Last);
-		Character_Count := Integer(Buffer_Last) / Character_Length;
-		Last := Character_Count + (Item'First - 1);
-		Buffer_I := 1;
-		for I in Item'First..Last loop
-			Item(I) := Conversion(Buffer(Buffer_I .. Buffer_I + Character_Length - 1));
-			Buffer_I := Buffer_I + Character_Length;
-		end loop;
-	end;
+	--procedure Read_String(
+	--	Stream: in out Root_Stream_Type'Class;
+	--	Item: out String;
+	--	Last: out Natural
+	--) is
+	--	Character_Length: constant := Character'Stream_Size / Stream_Element'Size;
+	--	Buffer_Length: constant Stream_Element_Offset := Item'Length * Character_Length;
+	--	Buffer: Stream_Element_Array(1 .. Buffer_Length);
+	--	Buffer_I, Buffer_Last: Stream_Element_Offset;
+	--	Character_Count: Natural;
+	--	function Conversion is new Ada.Unchecked_Conversion(
+	--		Source => Stream_Element_Array,
+	--		Target => Character
+	--	);
+	--begin
+	--	Stream.Read(Buffer, Buffer_Last);
+	--	Character_Count := Integer(Buffer_Last) / Character_Length;
+	--	Last := Character_Count + (Item'First - 1);
+	--	Buffer_I := 1;
+	--	for I in Item'First..Last loop
+	--		Item(I) := Conversion(Buffer(Buffer_I .. Buffer_I + Character_Length - 1));
+	--		Buffer_I := Buffer_I + Character_Length;
+	--	end loop;
+	--end;
 
 	Input_Stream: Stream_Access := Stream(Standard_Input);
 	Output_Stream: Stream_Access := Stream(Standard_Output);
