@@ -8,8 +8,7 @@ use  Ada.Text_IO;
 with Ada.Text_IO.Text_Streams;
 use  Ada.Text_IO.Text_Streams;
 with Ada.Unchecked_Conversion;
-with Encodings.Line_Endings.CR_LF.Coders;
-use  Encodings.Line_Endings;
+with Encodings.Line_Endings.Add_CR;
 procedure Add_CR is
 	-- String version of Stream.Read
 	procedure Read_String(
@@ -44,7 +43,7 @@ procedure Add_CR is
 	Input_Last, Input_Read_Last: Natural;
 	Output_Last: Natural;
 
-	Coder: CR_LF.Coders.Encoders.Coder;
+	Coder: Encodings.Line_Endings.Add_CR.Coder;
 begin
 	while not End_Of_File(Standard_Input) loop
 		Read_String(Input_Stream.all, Input_Buffer, Input_Read_Last);
